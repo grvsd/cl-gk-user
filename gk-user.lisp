@@ -18,7 +18,8 @@
    :vec-get
    :vec-length
    :vec-last-num
-   :fpath)
+   :fpath
+   :now)
   (:nicknames :gk))
    
 
@@ -73,5 +74,12 @@
 (defun fpath (a-dir a-fname)
   "dir-path + string -> file-path"
   (make-pathname :directory (directory-namestring a-dir) :name a-fname))
+
+;;;; date-time
+(defun now ()
+  (multiple-value-bind 
+	(second minute hour day month year)
+      (get-decoded-time)
+    (format t "~d-~2,'0d-~2,'0d ~2,'0d:~2,'0d:~2,'0d~%" year month day hour minute second)))
 
 ;;;
