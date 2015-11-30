@@ -37,9 +37,9 @@
 (defun file->string (fn)
   (when (pathnamep fn)
     (with-output-to-string (s)
-      (with-open-file (in fn)
-	   (when in 
-	     (loop for l = (read-line in nil)
+      (with-open-file (ifh fn)
+	   (when ifh 
+	     (loop for l = (read-line ifh nil)
 		  while l do (format s "~a~%" l)))))))
 
 ;;;; Base64
